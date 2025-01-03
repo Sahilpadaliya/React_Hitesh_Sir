@@ -71,16 +71,31 @@ import "./App.css";
 
 // ------------------------------------------------------------------------------
 
-//  lec ) ---> ye ek interview question ka hai isme call back function ka use kiya 
-//             gya hai ki value 
+//  lec 8 ) ---> ye ek interview question on the basis of counter 
+//  ka hai isme call back function ka use kiya gya hai ki value previous wali aye 
+//  aur use ho jaye and existing value ke bdle previous value add ho 
 
 function App() {
   let [counter, setCounter] = useState(15);
   const addvalue = () => {
-    setCounter(counter=> counter+1); 
-    setCounter(counter=> counter+1); 
-    setCounter(counter=> counter+1); 
-    setCounter(counter=> counter+1); 
+    setCounter(counter= counter+1) // ye use krne se sirf ek baar hi value update hogi 
+    // kyoki wo batch mai jayegi due to fibre algo ki repeated task ka ko ek saath batch 
+    // mai update kr do aur value ko ek baari mai update kr do 
+    setCounter(counter= counter+1) 
+    setCounter(counter= counter+1) 
+    setCounter(counter= counter+1) 
+    console.log("clicked ", counter);
+  };
+}   
+
+function App() {
+  let [counter, setCounter] = useState(15);
+  const addvalue = () => {
+    setCounter(prevcounter=> prevcounter+1); // ye value ko batch mai nahi lega but 
+    // previous value  mai lega aur update kr dega 
+    setCounter(prevcounter=> prevcounter+1); 
+    setCounter(prevcounter=> prevcounter+1); 
+    setCounter(prevcounter=> prevcounter+1); 
     console.log("clicked ", counter);
   };
 // const addvalue=()=>{
